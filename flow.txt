@@ -1,0 +1,51 @@
+Raw arXiv abstracts
+        ↓
+[NLTK / spaCy]  ← Cleaning, tokenisation, POS, lemmatisation
+        ↓
+[spaCy NER + LLM]  ← Extract structured fields from each abstract
+        ↓
+[BERT embeddings]  ← Convert each abstract to a vector
+        ↓
+[UMAP + Clustering]  ← Find groups of similar papers
+        ↓
+[Gensim LDA + LLM]  ← Both methods label clusters; compare them
+        ↓
+[FAISS / sklearn]  ← Semantic search index
+        ↓
+[LLM]  ← RAG layer for natural language queries
+        ↓
+Final demo system
+
+
+
+
+
+Step 3 — Exploratory Analysis & Visualisations
+  • Category distribution (already balanced, but plot it)
+  • POS tag distribution per category
+  • Word frequency / wordcloud per category  
+  • Abstract length distribution
+  • Vocabulary uniqueness per category (which categories have distinct vocab?)
+
+Step 4 — Named Entity Recognition (spaCy, full pipeline this time)
+  • Extract entities from abstracts
+  • What kinds of entities appear most?
+  • Are method names captured? (probably not well — sets up our LLM use case)
+
+Step 5 — Topic Modelling with LDA (Gensim)
+  • Train LDA on tokens, try k = 5, 10, 15
+  • Show top words per topic
+  • Map topics to arXiv categories (do they align?)
+
+Step 6 — Classification
+  • TF-IDF + Logistic Regression / SVM baseline
+  • BERT embeddings + classifier
+  • Confusion matrices, accuracy comparison
+
+Step 7 — Semantic Search + RAG
+  • BERT embeddings (sentence-transformers)
+  • Build search index (FAISS or sklearn)
+  • LLM (Gemini) for answer synthesis + structured extraction
+  • Compare keyword search vs semantic vs RAG
+
+Step 8 — Report writing
